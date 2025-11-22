@@ -3,8 +3,6 @@ package com.microservice.order_service.business.dtos.responses;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Getter
 @Setter
 public class OrderResponse {
@@ -13,6 +11,6 @@ public class OrderResponse {
     private String customerNumber;
     private String productId;
     private int quantity;
-    private Date date;
+    private String date;
 
 }

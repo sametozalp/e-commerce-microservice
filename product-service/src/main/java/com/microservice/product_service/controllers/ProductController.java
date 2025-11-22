@@ -25,20 +25,17 @@ public class ProductController {
 
     @PostMapping(value = "/createProduct", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     ResponseEntity<?> createProduct(
-            @RequestPart("request") ProductRequest request, // Metin verisi için ProductRequest DTO'su
-            @RequestPart("imageFile") MultipartFile imageFile // Dosya için MultipartFile
+            @RequestPart("request") ProductRequest request,
+            @RequestPart("imageFile") MultipartFile imageFile
     ) {
         InputStream inputStream;
         ObjectMetadata objectMetadata = new ObjectMetadata();
         objectMetadata.setContentType(imageFile.getContentType());
-
         try {
             inputStream = imageFile.getInputStream();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
         return ResponseEntity.ok(productService.createProduct(request, inputStream, objectMetadata));
     }
 }
